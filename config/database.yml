@@ -8,7 +8,7 @@ default: &default
 
 development:
   <<: *default
-  database: rails-docker-app_development
+  database: web_development
 test:
   <<: *default
   database: rails-docker-app_test

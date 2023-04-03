@@ -26,3 +26,5 @@ gem 'devise_token_auth'
 
 gem "faker"
 gem 'mysql2'
+
+# gem 'sqlite3'
