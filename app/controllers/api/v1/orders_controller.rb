@@ -16,6 +16,6 @@ class Api::V1::OrdersController < ApplicationController
   private
 
   def order_params
-    params.permit(:user_id, :description, purchased_products_attributes: [:price, :amount, :product_id])
+    params.permit(:user_id, :price, :description, purchased_products_attributes: [:price, :amount, :product_id])
   end
 end
