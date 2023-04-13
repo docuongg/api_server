@@ -16,7 +16,7 @@
   )
 end
 
-(1..20).each do |id|
+(1..8).each do |id|
   Category.create!(
       name: Faker::Name.name,
       thumbnail_url: Faker::Avatar.image
@@ -27,8 +27,8 @@ end
   Product.create!(
       name: Faker::Name.name,
       thumbnail_url: Faker::Avatar.image,
-      category_id: rand(1..5),
-      price: rand(100.200)
+      category_id: rand(1..8),
+      price: rand(100..200)
   )
 end
 
@@ -36,8 +36,16 @@ end
   Order.create!(
       description: Faker::Movie.quote,
       total_price: rand(100..200),
-      status: rand(0..3),
+      status: rand(0..4),
       user_id: rand(1..10),
       created_at: Faker::Time.between(from: 2.months.ago, to: Time.now),
+  )
+end
+
+(1..100).each do |id|
+  PurchasedProduct.create!(
+      product_id: rand(1..20),
+      order_id: rand(1..50),
+      price: rand(100..200)
   )
 end
