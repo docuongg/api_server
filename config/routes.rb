@@ -14,6 +14,8 @@ Rails.application.routes.draw do
       resources :orders
       namespace :analyst do
         resources :orders
+        resources :categories
+        resources :products
       end
     end
   end
