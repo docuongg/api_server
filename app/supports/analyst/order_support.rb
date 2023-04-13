@@ -5,7 +5,7 @@ class Analyst::OrderSupport
     @params = params
     @from = start_time
     @to = end_time
-    @search = Order.where(created_at: start_time.beginning_of_day..end_time.end_of_day)
+    @search = Order.not_canceled.where(created_at: start_time.beginning_of_day..end_time.end_of_day)
   end
 
   def general
