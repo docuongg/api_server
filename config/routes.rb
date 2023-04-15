@@ -11,7 +11,9 @@ Rails.application.routes.draw do
         resources :products
       end
       resources :products
-      resources :orders
+      resources :orders do
+        resources :purchased_products
+      end
       namespace :analyst do
         resources :orders
         resources :categories

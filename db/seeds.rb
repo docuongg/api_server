@@ -11,6 +11,7 @@
       full_name: Faker::Name.name,
       user_name: Faker::Internet.email.split('@')[0],
       email: Faker::Internet.email,
+      address: Faker::Movie.quote,
       password: "Cuongptit1.", 
       password_confirmation: "Cuongptit1.",
   )
