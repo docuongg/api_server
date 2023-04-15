@@ -72,6 +72,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_07_144936) do
     t.string "unconfirmed_email"
     t.string "full_name"
     t.string "user_name"
+    t.string "address"
     t.string "image"
     t.string "email"
     t.text "bio"
