@@ -4,7 +4,7 @@ class Api::V1::OrdersController < ApplicationController
   def index
     @orders = Order.all
 
-    render json: @orders
+    render json: @orders.as_json(include: {user: {only: [:full_name, :address]}})
   end
 
   def create
@@ -18,7 +18,7 @@ class Api::V1::OrdersController < ApplicationController
   end
 
   def update
-    if @order.update(order_params)
+    if @order.can_approve? && @order.update(order_params)
       render json: @order
     else
       render json: @order.errors, status: :unprocessable_entity
@@ -32,7 +32,7 @@ class Api::V1::OrdersController < ApplicationController
   private
 
   def order_params
-    params.permit(:user_id, :price, :description, purchased_products_attributes: [:price, :amount, :product_id])
+    params.permit(:user_id, :price, :description, :status, purchased_products_attributes: [:price, :amount, :product_id])
   end
 
   def set_order
