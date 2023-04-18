@@ -21,6 +21,10 @@ class Api::V1::ProductsController < ApplicationController
     end
   end
 
+  def show
+    render json: @product
+  end
+
   def update
     if @product.update(product_params)
       render json: @product

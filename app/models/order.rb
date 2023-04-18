@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  has_many :purchased_products
+  has_many :purchased_products, dependent: :destroy
   belongs_to :user
 
   accepts_nested_attributes_for :purchased_products
