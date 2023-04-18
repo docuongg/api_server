@@ -24,9 +24,10 @@ end
   )
 end
 
-(1..20).each do |id|
+(1..30).each do |id|
   Product.create!(
       name: Faker::Name.name,
+      description: Faker::Movie.quote,
       thumbnail_url: Faker::Avatar.image,
       category_id: rand(1..8),
       price: rand(100..200)
