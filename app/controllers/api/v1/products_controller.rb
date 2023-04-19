@@ -3,12 +3,12 @@ class Api::V1::ProductsController < ApplicationController
 
   def all
     @products = Product.all
-    render json: @products
+    render json: @products, each_serializer: ProductSerializer
   end
 
   def index
     @products = Category.find(params[:category_id]).products
-    render json: @products
+    render json: @products, each_serializer: ProductSerializer
   end
 
   def create
@@ -44,6 +44,6 @@ class Api::V1::ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:name, :description, :unit, :price, :category_id)
+      params.require(:product).permit(:name, :description, :unit, :price, :category_id, :avatar)
     end
 end

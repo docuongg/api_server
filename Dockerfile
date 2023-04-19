@@ -1,5 +1,6 @@
 FROM ruby:3.0.2
 
+
 RUN apt-get update -qq && apt-get install -y nodejs default-libmysqlclient-dev
 
 WORKDIR /app
