@@ -1,5 +1,5 @@
 FROM ruby:3.0.2
-RUN apt-get update
+RUN apt-get update && apt-get install -y libvips libvips-dev libvips-tools
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock

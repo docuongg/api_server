@@ -4,7 +4,7 @@ class Api::V1::CategoriesController < ApplicationController
   def index
     @categories = Category.all
 
-    render json: @categories
+    render json: @categories, each_serializer: CategorySerializer
   end
 
   def create
@@ -36,6 +36,6 @@ class Api::V1::CategoriesController < ApplicationController
     end
 
     def category_params
-      params.require(:category).permit(:name, :thumbnail_url)
+      params.require(:category).permit(:name, :thumbnail_url, :avatar)
     end
 end
