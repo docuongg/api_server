@@ -26,5 +26,7 @@ gem 'devise_token_auth'
 
 gem "faker"
 gem 'mysql2'
-
-# gem 'sqlite3'
+gem 'activestorage', '~> 7.0.4.2'
+gem "image_processing"
+gem 'ruby-vips'
+gem 'active_model_serializers'
