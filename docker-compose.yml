@@ -1,37 +1,22 @@
-version: "3"
+version: '3'
 
 services:
-  db:
-    image: mysql:5.5
-    ports:
-      - "6606:3306"
-    volumes:
-      - db_data:/var/lib/mysql
-      - .:/myapp
-    environment:
-      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
-      MYSQL_USER: ${DATABASE_USER}
-      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
   web:
     build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails db:migrate && bundle exec rails s -p 3000 -b '0.0.0.0'"
-    env_file:
-      - .env
-    volumes:
-      - .:/myapp
+    command: /bin/bash -c "rm -f /myapp/tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     ports:
       - "3000:3000"
     depends_on:
       - db
-    stdin_open: true
-    tty: true
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    ports:
-      - "8080:80"
     environment:
-      PMA_HOST: ${DATABASE_HOST}
-    depends_on:
-      - db
-volumes:
-  db_data:
+      DATABASE_HOST: db
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: password
+      DATABASE_NAME: web_development
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3307:3306"
+      
