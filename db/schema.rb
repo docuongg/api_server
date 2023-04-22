@@ -49,6 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_222053) do
   create_table "categories", charset: "utf8", force: :cascade do |t|
     t.string "name"
     t.string "thumbnail_url"
+    t.string "description"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
   end
