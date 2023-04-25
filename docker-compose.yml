@@ -3,7 +3,7 @@ version: '3'
 services:
   web:
     build: .
-    command: /bin/bash -c "rm -f /myapp/tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: /bin/bash -c "rm -f /app/tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     ports:
       - "3000:3000"
     depends_on:
@@ -19,4 +19,17 @@ services:
       MYSQL_ROOT_PASSWORD: password
     ports:
       - "3307:3306"
-      
+  
+  redis:
+    image: redis:6.2
+    ports:
+      - "6379:6379"
+
+  sidekiq:
+    build: .
+    command: bundle exec sidekiq -C config/sidekiq.yml
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+      - redis

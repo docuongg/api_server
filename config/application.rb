@@ -1,6 +1,7 @@
 require_relative "boot"
 
 require "rails/all"
+require 'sidekiq'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -14,6 +15,7 @@ module AuthApp
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use config.session_store, config.session_options
     config.default_url_options = { host: 'localhost', port: 3000 }
+    config.active_job.queue_adapter = :sidekiq
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

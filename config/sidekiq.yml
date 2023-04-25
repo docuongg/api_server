@@ -1,0 +1,10 @@
+:concurrency: 5
+:queues:
+  - default
+  - mailers
+
+:schedule:
+  create_random_orders:
+    cron: "* * * * *"
+    class: CreateRandomOrdersJob
+    enabled: true

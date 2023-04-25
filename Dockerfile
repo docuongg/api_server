@@ -1,6 +1,6 @@
 FROM ruby:3.0.2
 
-RUN apt-get update -qq && apt-get install -y nodejs default-libmysqlclient-dev
+RUN apt-get update && apt-get install -y libvips libvips-dev libvips-tools
 
 WORKDIR /app
 
