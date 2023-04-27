@@ -8,6 +8,7 @@ services:
       - "3000:3000"
     depends_on:
       - db
+      - redis
     environment:
       DATABASE_HOST: db
       DATABASE_USERNAME: root

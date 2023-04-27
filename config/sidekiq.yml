@@ -3,7 +3,7 @@
   - default
   - mailers
 
-:schedule:
+:scheduler:
   create_random_orders:
     cron: "* * * * *"
     class: CreateRandomOrdersJob
