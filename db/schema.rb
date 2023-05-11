@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_222053) do
     t.string "record_type", null: false
     t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
-    t.datetime "created_at", precision: nil, null: false
+    t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -29,7 +29,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_222053) do
     t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum"
-    t.datetime "created_at", precision: nil, null: false
+    t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -42,24 +42,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_222053) do
   create_table "articles", charset: "utf8", force: :cascade do |t|
     t.string "title"
     t.string "body"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "categories", charset: "utf8", force: :cascade do |t|
     t.string "name"
     t.string "thumbnail_url"
     t.string "description"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "orders", charset: "utf8", force: :cascade do |t|
     t.string "description"
     t.float "total_price"
     t.integer "status"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -70,8 +70,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_222053) do
     t.string "unit"
     t.float "price"
     t.string "thumbnail_url"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "category_id", null: false
     t.index ["category_id"], name: "index_products_on_category_id"
   end
@@ -79,8 +79,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_222053) do
   create_table "purchased_products", charset: "utf8", force: :cascade do |t|
     t.float "price"
     t.integer "amount"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "product_id", null: false
     t.bigint "order_id", null: false
     t.index ["order_id"], name: "index_purchased_products_on_order_id"
@@ -92,12 +92,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_222053) do
     t.string "uid", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at", precision: nil
+    t.datetime "reset_password_sent_at"
     t.boolean "allow_password_change", default: false
-    t.datetime "remember_created_at", precision: nil
+    t.datetime "remember_created_at"
     t.string "confirmation_token"
-    t.datetime "confirmed_at", precision: nil
-    t.datetime "confirmation_sent_at", precision: nil
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.string "full_name"
     t.string "user_name"
@@ -106,8 +106,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_222053) do
     t.string "email"
     t.text "bio"
     t.text "tokens"
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
