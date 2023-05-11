@@ -224,7 +224,7 @@ DEPENDENCIES
   rails (~> 7.0.4, >= 7.0.4.2)
   ruby-vips
   sidekiq
-  sidekiq-scheduler (~> 5.0, >= 5.0.2)
+  sidekiq-scheduler
   tzinfo-data
 
 RUBY VERSION

@@ -31,4 +31,4 @@ gem "image_processing"
 gem 'ruby-vips'
 gem 'active_model_serializers'
 gem 'sidekiq'
-gem 'sidekiq-scheduler', '~> 5.0', '>= 5.0.2'
+gem 'sidekiq-scheduler'

@@ -6,6 +6,11 @@ class Api::V1::ProductsController < ApplicationController
     render json: @products, each_serializer: ProductSerializer
   end
 
+  def search
+    @products = Product.where("name LIKE ?", "%#{params[:key]}%")
+    render json: @products, each_serializer: ProductSerializer
+  end
+
   def index
     @products = Category.find(params[:category_id]).products
     render json: @products, each_serializer: ProductSerializer
