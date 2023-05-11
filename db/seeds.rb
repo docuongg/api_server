@@ -31,17 +31,18 @@ end
       description: Faker::Movie.quote,
       thumbnail_url: Faker::Avatar.image,
       category_id: rand(1..8),
+      unit: Faker::Name.name,
       price: rand(100..200)
   )
 end
 
-(1..100).each do |id|
+(1..150).each do |id|
   Order.create!(
       description: Faker::Movie.quote,
       total_price: rand(200..400),
       status: rand(0..4),
       user_id: rand(1..10),
-      created_at: Faker::Time.between(from: 1.months.ago, to: Time.now),
+      created_at: Faker::Time.between(from: 2.months.ago, to: Time.now),
   )
 end
 

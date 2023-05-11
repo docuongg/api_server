@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       mount_devise_token_auth_for 'User', at: 'auth'
       get '/products', to: 'products#all'
+      get '/products/search', to: 'products#search'
       resources :categories do
         resources :products
       end

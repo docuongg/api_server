@@ -8,12 +8,13 @@ class Api::V1::OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
-
-    if @order.save
-      render json: @order, status: :created
+    order = Order.new(order_params)
+    order.total_price = order_params[:total_price]
+  
+    if order.save
+      render json: order, status: :created
     else
-      render json: @order.errors, status: :unprocessable_entity
+      render json: { errors: order.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -32,7 +33,7 @@ class Api::V1::OrdersController < ApplicationController
   private
 
   def order_params
-    params.permit(:user_id, :price, :description, :status, purchased_products_attributes: [:price, :amount, :product_id])
+    params.require(:order).permit(:user_id, :status, :total_price, :address, :description, purchased_products_attributes: [:product_id, :price, :amount])
   end
 
   def set_order
