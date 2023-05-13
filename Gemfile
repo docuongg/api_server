@@ -31,4 +31,8 @@ gem "image_processing"
 gem 'ruby-vips'
 gem 'active_model_serializers'
 gem 'sidekiq'
+
 gem 'sidekiq-scheduler'
+
+gem 'zalopay-sdk-ruby'
+
